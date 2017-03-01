@@ -29,6 +29,8 @@ func (h baseHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	buf := new(bytes.Buffer)
 	json.Indent(buf, recordJSON, "", "\t")
+
+	buf.WriteString("\n")
 	buf.WriteTo(w)
 }
 
