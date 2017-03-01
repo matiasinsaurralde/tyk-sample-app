@@ -1,0 +1,8 @@
+---
+applications:
+- name: tyk-sample-app
+  memory: 32M
+  instances: 1
+  host: tyk-sample-app
+  path: .
+  buildpack: https://github.com/cloudfoundry/buildpack-go.git
