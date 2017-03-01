@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/matiasinsaurralde/tyk-sample-app",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v70",
+	"Deps": []
+}
