@@ -3,7 +3,13 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"os"
+)
+
+const (
+	defaultPort = "8000"
 )
 
 type baseHandler struct{}
@@ -32,8 +38,17 @@ type requestRecord struct {
 	Headers    map[string]string `json:"request_headers"`
 }
 
+var listenPort string
+
 func main() {
 	var handler http.Handler
 	handler = baseHandler{}
-	http.ListenAndServe(":8000", handler)
+
+	if port := os.Getenv("PORT"); len(port) == 0 {
+		listenPort = defaultPort
+	} else {
+		listenPort = port
+	}
+
+	http.ListenAndServe(fmt.Sprintf(":%s", listenPort), handler)
 }
